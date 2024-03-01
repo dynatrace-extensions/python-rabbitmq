@@ -1,0 +1,2185 @@
+name: custom:python.rabbitmq
+version: 1.0.0
+minDynatraceVersion: 1.280.0
+author:
+  name: Dynatrace
+
+python:
+  runtime:
+    module: rabbitmq_extension
+    version:
+      min: "3.9"
+
+  activation:
+    remote:
+      path: activationSchema.json
+
+  featureSets:
+    - featureSet: Cluster
+      metrics:
+        - key: rabbitmq.cluster.messages
+        - key: rabbitmq.cluster.messages_ready
+        - key: rabbitmq.cluster.messages_unacknowledged
+        - key: rabbitmq.cluster.consumers
+        - key: rabbitmq.cluster.connections
+        - key: rabbitmq.cluster.queues
+        - key: rabbitmq.cluster.exchanges
+        - key: rabbitmq.cluster.channels
+        - key: rabbitmq.cluster.ack.count
+        - key: rabbitmq.cluster.unack.count
+        - key: rabbitmq.cluster.deliver_get.count
+        - key: rabbitmq.cluster.publish.count
+    - featureSet: Node
+      metrics:
+        - key: rabbitmq.node.mem_used
+        - key: rabbitmq.node.mem_limit
+        - key: rabbitmq.node.fd_used
+        - key: rabbitmq.node.fd_total
+        - key: rabbitmq.node.sockets_used
+        - key: rabbitmq.node.sockets_total
+        - key: rabbitmq.node.disk_free
+        - key: rabbitmq.node.partitions
+        - key: rabbitmq.node.uptime
+        - key: rabbitmq.node.gc_num.count
+    - featureSet: Queue
+      metrics:
+        - key: rabbitmq.queue.messages
+        - key: rabbitmq.queue.messages_ready
+        - key: rabbitmq.queue.messages_unacknowledged
+        - key: rabbitmq.queue.message_bytes
+        - key: rabbitmq.queue.memory
+        - key: rabbitmq.queue.consumers
+        - key: rabbitmq.queue.publish.count
+        - key: rabbitmq.queue.redeliver.count
+        - key: rabbitmq.queue.messages_delivered.count
+        - key: rabbitmq.queue.messages_deliver_no_ack.count
+        - key: rabbitmq.queue.drop_unroutable.count
+        - key: rabbitmq.queue.return_unroutable.count
+    - featureSet: Virtual Host
+      metrics:
+        - key: rabbitmq.vhost.messages
+        - key: rabbitmq.vhost.messages_ready
+        - key: rabbitmq.vhost.messages_unacknowledged
+        - key: rabbitmq.vhost.recv_oct.count
+        - key: rabbitmq.vhost.send_oct.count
+        
+
+
+metrics:
+  - key: rabbitmq.cluster.messages
+    metadata:
+      displayName: Messages (Cluster)
+      description: Total messages (ready + unacknowledged) in the cluster
+      unit: Count
+      dimensions:
+        - key: cluster
+          displayName: Cluster
+        - key: node
+          displayName: Node
+        - key: rabbitmq_version
+          displayName: RabbitMQ Version
+        - key: erlang_version
+          displayName: Erlang Version
+      tags:
+        - com.dynatrace.rabbitmq
+
+  - key: rabbitmq.cluster.messages_ready
+    metadata:
+      displayName: Messages Ready (Cluster)
+      description: Total messages ready in the cluster
+      unit: Count
+      dimensions:
+        - key: cluster
+          displayName: Cluster
+        - key: node
+          displayName: Node
+        - key: rabbitmq_version
+          displayName: RabbitMQ Version
+        - key: erlang_version
+          displayName: Erlang Version
+      tags:
+        - com.dynatrace.rabbitmq
+
+  - key: rabbitmq.cluster.messages_unacknowledged
+    metadata:
+      displayName: Messages Unacknowledged (Cluster)
+      description: Total messages unacknowledged in the cluster
+      unit: Count
+      dimensions:
+        - key: cluster
+          displayName: Cluster
+        - key: node
+          displayName: Node
+        - key: rabbitmq_version
+          displayName: RabbitMQ Version
+        - key: erlang_version
+          displayName: Erlang Version
+      tags:
+        - com.dynatrace.rabbitmq
+
+  - key: rabbitmq.cluster.consumers
+    metadata:
+      displayName: Consumers (Cluster)
+      description: Number of consumers
+      unit: Count
+      dimensions:
+        - key: cluster
+          displayName: Cluster
+        - key: node
+          displayName: Node
+        - key: rabbitmq_version
+          displayName: RabbitMQ Version
+        - key: erlang_version
+          displayName: Erlang Version
+      tags:
+        - com.dynatrace.rabbitmq
+
+  - key: rabbitmq.cluster.connections
+    metadata:
+      displayName: Connections (Cluster)
+      description: Number of connections
+      unit: Count
+      dimensions:
+        - key: cluster
+          displayName: Cluster
+        - key: node
+          displayName: Node
+        - key: rabbitmq_version
+          displayName: RabbitMQ Version
+        - key: erlang_version
+          displayName: Erlang Version
+      tags:
+        - com.dynatrace.rabbitmq
+
+  - key: rabbitmq.cluster.queues
+    metadata:
+      displayName: Queues
+      description: Number of queues
+      unit: Count
+      dimensions:
+        - key: cluster
+          displayName: Cluster
+        - key: node
+          displayName: Node
+        - key: rabbitmq_version
+          displayName: RabbitMQ Version
+        - key: erlang_version
+          displayName: Erlang Version
+      tags:
+        - com.dynatrace.rabbitmq
+
+  - key: rabbitmq.cluster.exchanges
+    metadata:
+      displayName: Exchanges
+      description: Number of exchanges
+      unit: Count
+      dimensions:
+        - key: cluster
+          displayName: Cluster
+        - key: node
+          displayName: Node
+        - key: rabbitmq_version
+          displayName: RabbitMQ Version
+        - key: erlang_version
+          displayName: Erlang Version
+      tags:
+        - com.dynatrace.rabbitmq
+
+  - key: rabbitmq.cluster.channels
+    metadata:
+      displayName: Channels
+      description: Number of channels
+      unit: Count
+      dimensions:
+        - key: cluster
+          displayName: Cluster
+        - key: node
+          displayName: Node
+        - key: rabbitmq_version
+          displayName: RabbitMQ Version
+        - key: erlang_version
+          displayName: Erlang Version
+      tags:
+        - com.dynatrace.rabbitmq
+
+  - key: rabbitmq.cluster.ack.count
+    metadata:
+      displayName: Messages Acknowledged (Cluster)
+      description: Total messages acknowledged in the cluster
+      unit: Count
+      dimensions:
+        - key: cluster
+          displayName: Cluster
+        - key: node
+          displayName: Node
+        - key: rabbitmq_version
+          displayName: RabbitMQ Version
+        - key: erlang_version
+          displayName: Erlang Version
+      tags:
+        - com.dynatrace.rabbitmq
+
+  - key: rabbitmq.cluster.unack.count
+    metadata:
+      displayName: Messages Unacknowledged (Cluster)
+      description: Total messages unacknowledged in the cluster
+      unit: Count
+      dimensions:
+        - key: cluster
+          displayName: Cluster
+        - key: node
+          displayName: Node
+        - key: rabbitmq_version
+          displayName: RabbitMQ Version
+        - key: erlang_version
+          displayName: Erlang Version
+      tags:
+        - com.dynatrace.rabbitmq
+
+  - key: rabbitmq.cluster.deliver_get.count
+    metadata:
+      displayName: Messages Delivered (Cluster)
+      description: Total messages delivered in the cluster
+      unit: Count
+      dimensions:
+        - key: cluster
+          displayName: Cluster
+        - key: node
+          displayName: Node
+        - key: rabbitmq_version
+          displayName: RabbitMQ Version
+        - key: erlang_version
+          displayName: Erlang Version
+      tags:
+        - com.dynatrace.rabbitmq
+
+  - key: rabbitmq.cluster.publish.count
+    metadata:
+      displayName: Messages Published (Cluster)
+      description: Total messages published in the cluster
+      unit: Count
+      dimensions:
+        - key: cluster
+          displayName: Cluster
+        - key: node
+          displayName: Node
+        - key: rabbitmq_version
+          displayName: RabbitMQ Version
+        - key: erlang_version
+          displayName: Erlang Version
+      tags:
+        - com.dynatrace.rabbitmq
+
+  - key: rabbitmq.queue.messages
+    metadata:
+      displayName: Messages
+      description: Sum of ready and unacknowledged messages (queue depth).
+      unit: Count
+      dimensions:
+        - key: cluster
+          displayName: Cluster
+        - key: node
+          displayName: Node
+        - key: rabbitmq_version
+          displayName: RabbitMQ Version
+        - key: erlang_version
+          displayName: Erlang Version
+        - key: vhost
+          displayName: Virtual Host
+        - key: queue
+          displayName: Queue
+        - key: durable
+          displayName: Durable
+        - key: policy
+          displayName: Policy
+        - key: queue_state
+          displayName: State
+        - key: type
+          displayName: Type
+      tags:
+        - com.dynatrace.rabbitmq
+        - rabbitmq.queue
+  - key: rabbitmq.queue.messages_ready
+    metadata:
+      displayName: Messages Ready
+      description: Number of messages ready to be delivered to clients.
+      unit: Count
+      dimensions:
+        - key: cluster
+          displayName: Cluster
+        - key: node
+          displayName: Node
+        - key: rabbitmq_version
+          displayName: RabbitMQ Version
+        - key: erlang_version
+          displayName: Erlang Version
+        - key: vhost
+          displayName: Virtual Host
+        - key: queue
+          displayName: Queue
+        - key: durable
+          displayName: Durable
+        - key: policy
+          displayName: Policy
+        - key: queue_state
+          displayName: State
+        - key: type
+          displayName: Type
+      tags:
+        - com.dynatrace.rabbitmq
+        - rabbitmq.queue
+  - key: rabbitmq.queue.messages_unacknowledged
+    metadata:
+      displayName: Messages Unacknowledged
+      description: Number of messages delivered to clients but not yet acknowledged.
+      unit: Count
+      dimensions:
+        - key: cluster
+          displayName: Cluster
+        - key: node
+          displayName: Node
+        - key: rabbitmq_version
+          displayName: RabbitMQ Version
+        - key: erlang_version
+          displayName: Erlang Version
+        - key: vhost
+          displayName: Virtual Host
+        - key: queue
+          displayName: Queue
+        - key: durable
+          displayName: Durable
+        - key: policy
+          displayName: Policy
+        - key: queue_state
+          displayName: State
+        - key: type
+          displayName: Type
+      tags:
+        - com.dynatrace.rabbitmq
+        - rabbitmq.queue
+  - key: rabbitmq.queue.message_bytes
+    metadata:
+      displayName: Message Bytes
+      description: Sum of the size of all message bodies in the queue. This does not include the message properties (including headers) or any overhead.
+      unit: Byte
+      dimensions:
+        - key: cluster
+          displayName: Cluster
+        - key: node
+          displayName: Node
+        - key: rabbitmq_version
+          displayName: RabbitMQ Version
+        - key: erlang_version
+          displayName: Erlang Version
+        - key: vhost
+          displayName: Virtual Host
+        - key: queue
+          displayName: Queue
+        - key: durable
+          displayName: Durable
+        - key: policy
+          displayName: Policy
+        - key: queue_state
+          displayName: State
+        - key: type
+          displayName: Type
+      tags:
+        - com.dynatrace.rabbitmq
+        - rabbitmq.queue
+  - key: rabbitmq.queue.memory
+    metadata:
+      displayName: Memory
+      description: Bytes of memory allocated by the runtime for the queue, including stack, heap and internal structures.
+      unit: Byte
+      dimensions:
+        - key: cluster
+          displayName: Cluster
+        - key: node
+          displayName: Node
+        - key: rabbitmq_version
+          displayName: RabbitMQ Version
+        - key: erlang_version
+          displayName: Erlang Version
+        - key: vhost
+          displayName: Virtual Host
+        - key: queue
+          displayName: Queue
+        - key: durable
+          displayName: Durable
+        - key: policy
+          displayName: Policy
+        - key: queue_state
+          displayName: State
+        - key: type
+          displayName: Type
+      tags:
+        - com.dynatrace.rabbitmq
+        - rabbitmq.queue
+  - key: rabbitmq.queue.consumers
+    metadata:
+      displayName: Consumers
+      description: Number of consumers.
+      unit: Count
+      dimensions:
+        - key: cluster
+          displayName: Cluster
+        - key: node
+          displayName: Node
+        - key: rabbitmq_version
+          displayName: RabbitMQ Version
+        - key: erlang_version
+          displayName: Erlang Version
+        - key: vhost
+          displayName: Virtual Host
+        - key: queue
+          displayName: Queue
+        - key: durable
+          displayName: Durable
+        - key: policy
+          displayName: Policy
+        - key: queue_state
+          displayName: State
+        - key: type
+          displayName: Type
+      tags:
+        - com.dynatrace.rabbitmq
+        - rabbitmq.queue
+  - key: rabbitmq.queue.publish.count
+    metadata:
+      displayName: Publish
+      description: Count of messages published.
+      unit: Count
+      dimensions:
+        - key: cluster
+          displayName: Cluster
+        - key: node
+          displayName: Node
+        - key: rabbitmq_version
+          displayName: RabbitMQ Version
+        - key: erlang_version
+          displayName: Erlang Version
+        - key: vhost
+          displayName: Virtual Host
+        - key: queue
+          displayName: Queue
+        - key: durable
+          displayName: Durable
+        - key: policy
+          displayName: Policy
+        - key: queue_state
+          displayName: State
+        - key: type
+          displayName: Type
+      tags:
+        - com.dynatrace.rabbitmq
+        - rabbitmq.queue
+  - key: rabbitmq.queue.redeliver.count
+    metadata:
+      displayName: Redeliver
+      description: Count of subset of messages in deliver_get which had the redelivered flag set.
+      unit: Count
+      dimensions:
+        - key: cluster
+          displayName: Cluster
+        - key: node
+          displayName: Node
+        - key: rabbitmq_version
+          displayName: RabbitMQ Version
+        - key: erlang_version
+          displayName: Erlang Version
+        - key: vhost
+          displayName: Virtual Host
+        - key: queue
+          displayName: Queue
+        - key: durable
+          displayName: Durable
+        - key: policy
+          displayName: Policy
+        - key: queue_state
+          displayName: State
+        - key: type
+          displayName: Type
+      tags:
+        - com.dynatrace.rabbitmq
+        - rabbitmq.queue
+  - key: rabbitmq.queue.messages_delivered.count
+    metadata:
+      displayName: Messages Delivered
+      description: Messages delivered to consumers.
+      unit: Count
+      dimensions:
+        - key: cluster
+          displayName: Cluster
+        - key: node
+          displayName: Node
+        - key: rabbitmq_version
+          displayName: RabbitMQ Version
+        - key: erlang_version
+          displayName: Erlang Version
+        - key: vhost
+          displayName: Virtual Host
+        - key: queue
+          displayName: Queue
+        - key: durable
+          displayName: Durable
+        - key: policy
+          displayName: Policy
+        - key: queue_state
+          displayName: State
+        - key: type
+          displayName: Type
+      tags:
+        - com.dynatrace.rabbitmq
+        - rabbitmq.queue
+  - key: rabbitmq.queue.messages_deliver_no_ack.count
+    metadata:
+      displayName: Messages Delivered No Ack
+      description: Count of messages delivered in no-acknowledgement mode to consumers.
+      unit: Count
+      dimensions:
+        - key: cluster
+          displayName: Cluster
+        - key: node
+          displayName: Node
+        - key: rabbitmq_version
+          displayName: RabbitMQ Version
+        - key: erlang_version
+          displayName: Erlang Version
+        - key: vhost
+          displayName: Virtual Host
+        - key: queue
+          displayName: Queue
+        - key: durable
+          displayName: Durable
+        - key: policy
+          displayName: Policy
+        - key: queue_state
+          displayName: State
+        - key: type
+          displayName: Type
+      tags:
+        - com.dynatrace.rabbitmq
+        - rabbitmq.queue
+  - key: rabbitmq.queue.drop_unroutable.count
+    metadata:
+      displayName: Messages Dropped Unroutable
+      description: Count of messages dropped as unroutable.
+      unit: Count
+      dimensions:
+        - key: cluster
+          displayName: Cluster
+        - key: node
+          displayName: Node
+        - key: rabbitmq_version
+          displayName: RabbitMQ Version
+        - key: erlang_version
+          displayName: Erlang Version
+        - key: vhost
+          displayName: Virtual Host
+        - key: queue
+          displayName: Queue
+        - key: durable
+          displayName: Durable
+        - key: policy
+          displayName: Policy
+        - key: queue_state
+          displayName: State
+        - key: type
+          displayName: Type
+      tags:
+        - com.dynatrace.rabbitmq
+        - rabbitmq.queue
+  - key: rabbitmq.queue.return_unroutable.count
+    metadata:
+      displayName: Messages Returned Unroutable
+      description: Count of messages returned to the publisher as unroutable.
+      unit: Count
+      dimensions:
+        - key: cluster
+          displayName: Cluster
+        - key: node
+          displayName: Node
+        - key: rabbitmq_version
+          displayName: RabbitMQ Version
+        - key: erlang_version
+          displayName: Erlang Version
+        - key: vhost
+          displayName: Virtual Host
+        - key: queue
+          displayName: Queue
+        - key: durable
+          displayName: Durable
+        - key: policy
+          displayName: Policy
+        - key: queue_state
+          displayName: State
+        - key: type
+          displayName: Type
+      tags:
+        - com.dynatrace.rabbitmq
+        - rabbitmq.queue
+
+
+  - key: rabbitmq.node.mem_used
+    metadata:
+      displayName: Memory Used
+      description: Memory used in bytes.
+      unit: Byte
+      dimensions:
+        - key: cluster
+          displayName: Cluster
+        - key: node
+          displayName: Node
+        - key: type
+          displayName: Type
+        - key: running
+          displayName: Running
+        - key: processors
+          displayName: Processors
+      tags:
+        - com.dynatrace.rabbitmq
+        - rabbitmq.queue
+
+  - key: rabbitmq.node.mem_limit
+    metadata:
+      displayName: Memory Limit
+      description: Point at which the memory alarm will go off.
+      unit: Byte
+      dimensions:
+        - key: cluster
+          displayName: Cluster
+        - key: node
+          displayName: Node
+        - key: type
+          displayName: Type
+        - key: running
+          displayName: Running
+        - key: processors
+          displayName: Processors
+      tags:
+        - com.dynatrace.rabbitmq
+        - rabbitmq.queue
+
+  - key: rabbitmq.node.fd_used
+    metadata:
+      displayName: File Descriptors Used
+      description: Used file descriptors.
+      unit: Count
+      dimensions:
+        - key: cluster
+          displayName: Cluster
+        - key: node
+          displayName: Node
+        - key: type
+          displayName: Type
+        - key: running
+          displayName: Running
+        - key: processors
+          displayName: Processors
+      tags:
+        - com.dynatrace.rabbitmq
+        - rabbitmq.queue
+
+  - key: rabbitmq.node.fd_total
+    metadata:
+      displayName: File descriptors available
+      description: File descriptors available
+      unit: Count
+      dimensions:
+        - key: cluster
+          displayName: Cluster
+        - key: node
+          displayName: Node
+        - key: type
+          displayName: Type
+        - key: running
+          displayName: Running
+        - key: processors
+          displayName: Processors
+      tags:
+        - com.dynatrace.rabbitmq
+        - rabbitmq.queue
+
+  - key: rabbitmq.node.sockets_used
+    metadata:
+      displayName: Sockets Used
+      description: File descriptors used as sockets.
+      unit: Count
+      dimensions:
+        - key: cluster
+          displayName: Cluster
+        - key: node
+          displayName: Node
+        - key: type
+          displayName: Type
+        - key: running
+          displayName: Running
+        - key: processors
+          displayName: Processors
+      tags:
+        - com.dynatrace.rabbitmq
+        - rabbitmq.queue
+
+  - key: rabbitmq.node.sockets_total
+    metadata:
+      displayName: Sockets Available
+      description: File descriptors available to be used as sockets.
+      unit: Count
+      dimensions:
+        - key: cluster
+          displayName: Cluster
+        - key: node
+          displayName: Node
+        - key: type
+          displayName: Type
+        - key: running
+          displayName: Running
+        - key: processors
+          displayName: Processors
+      tags:
+        - com.dynatrace.rabbitmq
+        - rabbitmq.queue
+
+  - key: rabbitmq.node.disk_free
+    metadata:
+      displayName: Disk Free
+      description: Disk free space in bytes.
+      unit: Byte
+      dimensions:
+        - key: cluster
+          displayName: Cluster
+        - key: node
+          displayName: Node
+        - key: type
+          displayName: Type
+        - key: running
+          displayName: Running
+        - key: processors
+          displayName: Processors
+      tags:
+        - com.dynatrace.rabbitmq
+        - rabbitmq.queue
+
+  - key: rabbitmq.node.partitions
+    metadata:
+      displayName: Partitions
+      description: Number of network partitions this node is seeing.
+      unit: Count
+      dimensions:
+        - key: cluster
+          displayName: Cluster
+        - key: node
+          displayName: Node
+        - key: type
+          displayName: Type
+        - key: running
+          displayName: Running
+        - key: processors
+          displayName: Processors
+      tags:
+        - com.dynatrace.rabbitmq
+        - rabbitmq.queue
+
+  - key: rabbitmq.node.uptime
+    metadata:
+      displayName: Uptime
+      description: Time since the Erlang VM started, in milliseconds.
+      unit: MilliSecond
+      dimensions:
+        - key: cluster
+          displayName: Cluster
+        - key: node
+          displayName: Node
+        - key: type
+          displayName: Type
+        - key: running
+          displayName: Running
+        - key: processors
+          displayName: Processors
+      tags:
+        - com.dynatrace.rabbitmq
+        - rabbitmq.queue
+
+  - key: rabbitmq.node.gc_num.count
+    metadata:
+      displayName: Garbage Collection Count
+      description: Number of garbage collections.
+      unit: Count
+      dimensions:
+        - key: cluster
+          displayName: Cluster
+        - key: node
+          displayName: Node
+        - key: type
+          displayName: Type
+        - key: running
+          displayName: Running
+        - key: processors
+          displayName: Processors
+      tags:
+        - com.dynatrace.rabbitmq
+        - rabbitmq.queue
+
+
+  - key: rabbitmq.vhost.messages
+    metadata:
+      displayName: Messages (Virtual Host)
+      description: Sum of ready and unacknowledged messages for all queues in the Virtual Host.
+      unit: Count
+      dimensions:
+        - key: cluster
+          displayName: Cluster
+        - key: vhost
+          displayName: Virtual Host
+        - key: description
+          displayName: Description
+      tags:
+        - com.dynatrace.rabbitmq
+        - rabbitmq.queue
+
+  - key: rabbitmq.vhost.messages_ready
+    metadata:
+      displayName: Messages Ready (Virtual Host)
+      description: Number of messages ready to be delivered to clients for all queues in the Virtual Host.
+      unit: Count
+      dimensions:
+        - key: cluster
+          displayName: Cluster
+        - key: vhost
+          displayName: Virtual Host
+        - key: description
+          displayName: Description
+      tags:
+        - com.dynatrace.rabbitmq
+        - rabbitmq.queue
+
+  - key: rabbitmq.vhost.messages_unacknowledged
+    metadata:
+      displayName: Messages Unacknowledged (Virtual Host)
+      description: Number of messages delivered to clients but not yet acknowledged for all queues in the Virtual Host.
+      unit: Count
+      dimensions:
+        - key: cluster
+          displayName: Cluster
+        - key: vhost
+          displayName: Virtual Host
+        - key: description
+          displayName: Description
+      tags:
+        - com.dynatrace.rabbitmq
+        - rabbitmq.queue
+
+  - key: rabbitmq.vhost.recv_oct.count
+    metadata:
+      displayName: Bytes Received (Virtual Host)
+      description: Total number of bytes received on the network for all queues in the Virtual Host.
+      unit: Byte
+      dimensions:
+        - key: cluster
+          displayName: Cluster
+        - key: vhost
+          displayName: Virtual Host
+        - key: description
+          displayName: Description
+      tags:
+        - com.dynatrace.rabbitmq
+        - rabbitmq.queue
+
+  - key: rabbitmq.vhost.send_oct.count
+    metadata:
+      displayName: Bytes Sent (Virtual Host)
+      description: Total number of bytes sent on the network for all queues in the Virtual Host.
+      unit: Byte
+      dimensions:
+        - key: cluster
+          displayName: Cluster
+        - key: vhost
+          displayName: Virtual Host
+        - key: description
+          displayName: Description
+      tags:
+        - com.dynatrace.rabbitmq
+        - rabbitmq.queue
+
+
+topology:
+  types:
+    - name: rabbitmq:cluster
+      displayName: Cluster
+      rules:
+        - idPattern: rabbitmq_cluster_{cluster}
+          instanceNamePattern: "{cluster}"
+          iconPattern: cluster
+          attributes:
+            - key: cluster
+              displayName: Cluster
+              pattern: "{cluster}"
+            - key: node
+              displayName: Node
+              pattern: "{node}"
+            - key: rabbitmq_version
+              displayName: RabbitMQ Version
+              pattern: "{rabbitmq_version}"
+            - key: erlang_version
+              displayName: Erlang Version
+              pattern: "{erlang_version}"
+          sources:
+            - sourceType: Metrics
+              condition: $prefix(rabbitmq.cluster.)
+            - sourceType: Metrics
+              condition: $prefix(rabbitmq.queue.)
+            - sourceType: Metrics
+              condition: $prefix(rabbitmq.vhost.)
+            - sourceType: Metrics
+              condition: $prefix(rabbitmq.node.)
+
+    - name: rabbitmq:node
+      displayName: Node
+      rules:
+        - idPattern: rabbitmq_node_{cluster}_{node}
+          instanceNamePattern: "{node}"
+          iconPattern: server
+          attributes:
+            - key: cluster
+              displayName: Cluster
+              pattern: "{cluster}"
+            - key: node
+              displayName: Node
+              pattern: "{node}"
+            - key: rabbitmq_version
+              displayName: RabbitMQ Version
+              pattern: "{rabbitmq_version}"
+            - key: erlang_version
+              displayName: Erlang Version
+              pattern: "{erlang_version}"
+            - key: dt.dns_names
+              displayName: DNS Names
+              pattern: "{dt.dns_names}"
+            - key: dt.ip_addresses
+              displayName: IP Addresses
+              pattern: "{dt.ip_addresses}"
+          sources:
+            - sourceType: Metrics
+              condition: $prefix(rabbitmq.queue.)
+            - sourceType: Metrics
+              condition: $prefix(rabbitmq.vhost.)
+            - sourceType: Metrics
+              condition: $prefix(rabbitmq.node.)
+
+    - name: rabbitmq:vhost
+      displayName: Virtual Host
+      rules:
+        - idPattern: rabbitmq_vhost_{cluster}_{vhost}
+          instanceNamePattern: "{vhost}"
+          iconPattern: webserver
+          attributes:
+            - key: cluster
+              displayName: Cluster
+              pattern: "{cluster}"
+            - key: rabbitmq_version
+              displayName: RabbitMQ Version
+              pattern: "{rabbitmq_version}"
+            - key: erlang_version
+              displayName: Erlang Version
+              pattern: "{erlang_version}"
+            - key: description
+              displayName: Description
+              pattern: "{description}"
+          sources:
+            - sourceType: Metrics
+              condition: $prefix(rabbitmq.queue.)
+            - sourceType: Metrics
+              condition: $prefix(rabbitmq.vhost.)
+
+    - name: rabbitmq:queue
+      displayName: Queue
+      rules:
+        - idPattern: rabbitmq_queue_{cluster}_{node}_{queue}
+          instanceNamePattern: "{queue}"
+          iconPattern: queue
+          attributes:
+            - key: cluster
+              displayName: Cluster
+              pattern: "{cluster}"
+            - key: node
+              displayName: Node
+              pattern: "{node}"
+            - key: rabbitmq_version
+              displayName: RabbitMQ Version
+              pattern: "{rabbitmq_version}"
+            - key: erlang_version
+              displayName: Erlang Version
+              pattern: "{erlang_version}"
+            - key: vhost
+              displayName: Virtual Host
+              pattern: "{vhost}"
+            - key: durable
+              displayName: Durable
+              pattern: "{durable}"
+            - key: policy
+              displayName: Policy
+              pattern: "{policy}"
+            - key: queue_state
+              displayName: State
+              pattern: "{state}"
+            - key: type
+              displayName: Type
+              pattern: "{type}"
+          sources:
+            - sourceType: Metrics
+              condition: $prefix(rabbitmq.queue.)
+
+
+  relationships:
+    - typeOfRelation: RUNS_ON
+      fromType: rabbitmq:node
+      toType: rabbitmq:cluster
+      sources:
+        - sourceType: Metrics
+          condition: $prefix(rabbitmq.node.)
+    - typeOfRelation: RUNS_ON
+      fromType: rabbitmq:queue
+      toType: rabbitmq:node
+      sources:
+        - sourceType: Metrics
+          condition: $prefix(rabbitmq.queue.)
+    - typeOfRelation: RUNS_ON
+      fromType: rabbitmq:vhost
+      toType: rabbitmq:cluster
+      sources:
+        - sourceType: Metrics
+          condition: $prefix(rabbitmq.vhost.)
+    - typeOfRelation: CHILD_OF
+      fromType: rabbitmq:queue
+      toType: rabbitmq:vhost
+      sources:
+        - sourceType: Metrics
+          condition: $prefix(rabbitmq.queue.)
+    - typeOfRelation: SAME_AS
+      fromType: rabbitmq:node
+      toType: host
+      sources:
+        - sourceType: Entities
+          mappingRules:
+            - sourceProperty: dt.ip_addresses
+              sourceTransformation: To lower case
+              destinationProperty: dt.ip_addresses
+              destinationTransformation: To lower case
+
+
+screens:
+  - entityType: rabbitmq:cluster
+    listSettings:
+      staticContent:
+        showGlobalFilter: false
+        header:
+          title: RabbitMQ Clusters
+          description: List of RabbitMQ Clusters
+          icon: cluster
+        breadcrumbs:
+          - type: NOOP
+            displayName: RabbitMQ
+          - type: ENTITY_LIST_REF
+            displayName: Clusters
+            entityType: rabbitmq:cluster
+      layout:
+        autoGenerate: false
+        cards:
+          - key: rabbitmq_cluster_charts_overview
+            type: CHART_GROUP
+          - key: rabbitmq_cluster_list_self
+            type: ENTITIES_LIST
+          - type: INJECTIONS
+    detailsSettings:
+      staticContent:
+        showProblems: true
+        showProperties: true
+        showTags: true
+        showGlobalFilter: false
+        showAddTag: true
+        breadcrumbs:
+          - type: NOOP
+            displayName: RabbitMQ
+          - type: ENTITY_LIST_REF
+            displayName: Clusters
+            entityType: rabbitmq:cluster
+      layout:
+        autoGenerate: false
+        cards:
+          - key: rabbitmq_cluster_charts_overview
+            type: CHART_GROUP
+          - key: rabbitmq_cluster_charts_messages
+            type: CHART_GROUP
+          - key: rabbitmq_cluster_nodes
+            type: ENTITIES_LIST
+          - key: rabbitmq_cluster_vhosts
+            type: ENTITIES_LIST
+          - key: rabbitmq_cluster_queues
+            type: ENTITIES_LIST
+          - type: INJECTIONS
+
+    chartsCards:
+      - key: rabbitmq_cluster_charts_overview
+        mode: NORMAL
+        numberOfVisibleCharts: 4
+        displayName: Cluster Overview
+        description: Overview of the RabbitMQ Cluster
+        charts:
+          - displayName: Queues
+            visualizationType: SINGLE_VALUE
+            singleValueConfig:
+              metric:
+                metricSelector: rabbitmq.cluster.queues:splitBy("dt.entity.rabbitmq:cluster"):auto:splitBy()
+
+          - displayName: Consumers
+            visualizationType: SINGLE_VALUE
+            singleValueConfig:
+              metric:
+                metricSelector: rabbitmq.cluster.consumers:splitBy("dt.entity.rabbitmq:cluster"):auto:splitBy()
+          - displayName: Connections
+            visualizationType: SINGLE_VALUE
+            singleValueConfig:
+              metric:
+                metricSelector: rabbitmq.cluster.connections:splitBy("dt.entity.rabbitmq:cluster"):auto:splitBy()
+
+          - displayName: Messages
+            visualizationType: GRAPH_CHART
+            graphChartConfig:
+              metrics:
+                - metricSelector: rabbitmq.cluster.messages_ready:splitBy("dt.entity.rabbitmq:cluster"):auto:splitBy()
+                  visualization:
+                    seriesType: AREA
+                    themeColor: BLUE
+                - metricSelector: rabbitmq.cluster.messages_unacknowledged:splitBy("dt.entity.rabbitmq:cluster"):auto:splitBy()
+                  visualization:
+                    seriesType: AREA
+                    themeColor: ORANGE
+
+          - displayName: Exchanges
+            visualizationType: SINGLE_VALUE
+            singleValueConfig:
+              metric:
+                metricSelector: rabbitmq.cluster.exchanges:splitBy("dt.entity.rabbitmq:cluster"):auto:splitBy()
+                
+
+      - key: rabbitmq_cluster_charts_messages
+        mode: NORMAL
+        numberOfVisibleCharts: 4
+        displayName: Messages
+        charts:
+          - displayName: Published vs Delivered
+            visualizationType: GRAPH_CHART
+            graphChartConfig:
+              stacked: true
+              defaultAggregation: SUM
+              metrics:
+                - metricSelector: rabbitmq.cluster.deliver_get.count
+                  visualization:
+                    seriesType: COLUMN
+                    themeColor: RED
+                    displayName: Deliver
+                - metricSelector: rabbitmq.cluster.publish.count
+                  visualization:
+                    seriesType: COLUMN
+                    themeColor: BLUE
+                    displayName: Publish
+          - displayName: Exchanges
+            visualizationType: GRAPH_CHART
+            graphChartConfig:
+              metrics:
+                - metricSelector: rabbitmq.cluster.exchanges
+                  visualization:
+                    seriesType: LINE
+                    themeColor: PURPLE
+          - displayName: Channels
+            visualizationType: GRAPH_CHART
+            graphChartConfig:
+              metrics:
+                - metricSelector: rabbitmq.cluster.channels
+                  visualization:
+                    seriesType: LINE
+                    themeColor: GREEN
+          - displayName: Acknowledged vs Unacknowledged
+            visualizationType: GRAPH_CHART
+            graphChartConfig:
+              metrics:
+                - metricSelector: rabbitmq.cluster.ack.count
+                  visualization:
+                    seriesType: AREA
+                - metricSelector: rabbitmq.cluster.unack.count
+                  visualization:
+                    seriesType: AREA
+
+
+    entitiesListCards:
+      - key: rabbitmq_cluster_list_self
+        displayName: Clusters
+        pageSize: 5
+        entitiesLimit: 500
+        displayCharts: false
+        enableDetailsExpandability: false
+        numberOfVisibleCharts: 2
+        displayIcons: true
+        
+        charts:
+          - displayName: Messages
+            visualizationType: GRAPH_CHART
+            graphChartConfig:
+              metrics:
+                - metricSelector: rabbitmq.cluster.messages:last
+          - displayName: Connections
+            visualizationType: GRAPH_CHART
+            graphChartConfig:
+              metrics:
+                - metricSelector: rabbitmq.cluster.connections:last
+                
+        columns:
+          - type: ATTRIBUTE
+            attribute:
+              key: rabbitmq_version
+              displayName: RabbitMQ Version
+          - type: RELATION
+            relation:
+              entitySelectorTemplate: type(rabbitmq:node),fromRelationships.runsOn($(entityConditions))
+              displayName: Nodes
+              displayAmount: true
+              fallbackMessage: No nodes
+          - type: RELATION
+            relation:
+              entitySelectorTemplate: type(rabbitmq:vhost),fromRelationships.runsOn($(entityConditions))
+              displayName: Virtual Hosts
+              displayAmount: true
+              fallbackMessage: No nodes found
+          - type: RELATION
+            relation:
+              entitySelectorTemplate: type(rabbitmq:queue),fromRelationships.runsOn(type(rabbitmq:node),fromRelationships.runsOn($(entityConditions)))
+              displayName: Queues
+              displayAmount: true
+              fallbackMessage: No queues found
+            
+      - key: rabbitmq_cluster_nodes
+        displayName: Nodes
+        pageSize: 5
+        entitiesLimit: 100
+        displayCharts: false
+        enableDetailsExpandability: false
+        numberOfVisibleCharts: 2
+        displayIcons: true
+        entitySelectorTemplate: type(rabbitmq:node),fromRelationships.runsOn($(entityConditions))
+        
+        charts:
+          - displayName: Memory Used
+            visualizationType: GRAPH_CHART
+            graphChartConfig:
+              metrics:
+                - metricSelector: rabbitmq.node.mem_used:last
+          
+          - displayName: Disk Free
+            visualizationType: GRAPH_CHART
+            graphChartConfig:
+              metrics:
+                - metricSelector: rabbitmq.node.disk_free:last
+
+          - displayName: Sockets Used
+            visualizationType: GRAPH_CHART
+            graphChartConfig:
+              metrics:
+                - metricSelector: rabbitmq.node.sockets_used:last
+
+          - displayName: Network Partitions
+            visualizationType: GRAPH_CHART
+            graphChartConfig:
+              metrics:
+                - metricSelector: rabbitmq.node.partitions:last
+                
+        columns:
+          - type: ATTRIBUTE
+            attribute:
+              key: rabbitmq_version
+              displayName: RabbitMQ Version
+          - type: ATTRIBUTE
+            attribute:
+              key: dt.ip_addresses
+              displayName: IP Addresses
+          - type: RELATION
+            relation:
+              # Queues that run on nodes that run on this cluster
+              entitySelectorTemplate: type(rabbitmq:queue),fromRelationships.runsOn($(entityConditions))
+              displayName: Queues
+              displayAmount: true
+              fallbackMessage: No queues found
+            
+      - key: rabbitmq_cluster_vhosts
+        displayName: Virtual Hosts
+        pageSize: 5
+        entitiesLimit: 100
+        displayCharts: false
+        enableDetailsExpandability: false
+        numberOfVisibleCharts: 2
+        displayIcons: true
+        entitySelectorTemplate: type(rabbitmq:vhost),fromRelationships.runsOn($(entityConditions))
+        
+        charts:
+          - displayName: Messages
+            visualizationType: GRAPH_CHART
+            graphChartConfig:
+              metrics:
+                - metricSelector: rabbitmq.vhost.messages:last
+          
+          - displayName: Bytes Received
+            visualizationType: GRAPH_CHART
+            graphChartConfig:
+              metrics:
+                - metricSelector: rabbitmq.vhost.recv_oct.count:splitBy():sum:fold
+
+          - displayName: Bytes Sent
+            visualizationType: GRAPH_CHART
+            graphChartConfig:
+              metrics:
+                - metricSelector: rabbitmq.vhost.send_oct.count:splitBy():sum:fold
+                
+        columns:
+          - type: ATTRIBUTE
+            attribute:
+              key: description
+              displayName: Description
+          - type: RELATION
+            relation:
+              entitySelectorTemplate: type(rabbitmq:queue),fromRelationships.isChildOf($(entityConditions))
+              displayName: Queues
+              displayAmount: true
+              fallbackMessage: No queues found
+            
+      - key: rabbitmq_cluster_queues
+        displayName: Queues
+        pageSize: 20
+        entitiesLimit: 100
+        displayCharts: false
+        enableDetailsExpandability: false
+        numberOfVisibleCharts: 4
+        displayIcons: true
+
+        # Queues that run on nodes that run on this cluster
+        entitySelectorTemplate: type(rabbitmq:queue),fromRelationships.runsOn(type(rabbitmq:node),fromRelationships.runsOn($(entityConditions)))
+        
+        charts:
+          - displayName: Queue Depth
+            visualizationType: GRAPH_CHART
+            graphChartConfig:
+              metrics:
+                - metricSelector: rabbitmq.queue.messages:last
+                  visualization:
+                    displayName: Queue depth
+          
+          - displayName: Message Bytes
+            visualizationType: GRAPH_CHART
+            graphChartConfig:
+              metrics:
+                - metricSelector: rabbitmq.queue.message_bytes:last:fold
+                  visualization:
+                    displayName: Message Bytes
+
+          - displayName: Published 
+            visualizationType: GRAPH_CHART
+            graphChartConfig:
+              metrics:
+                - metricSelector: rabbitmq.queue.publish.count:splitBy():sum:fold
+                  visualization:
+                    displayName: Published
+          
+          - displayName: Delivered 
+            visualizationType: GRAPH_CHART
+            graphChartConfig:
+              metrics:
+                - metricSelector: rabbitmq.queue.messages_delivered.count:splitBy():sum:fold
+                  visualization:
+                    displayName: Delivered
+                
+        columns:
+          - type: ATTRIBUTE
+            attribute:
+              key: type
+              displayName: Type
+          - type: ATTRIBUTE
+            attribute:
+              key: queue_state
+              displayName: State
+          - type: RELATION
+            relation:
+              entitySelectorTemplate: type(rabbitmq:node),toRelationships.runsOn($(entityConditions))
+              displayName: Node
+              
+          - type: RELATION
+            relation:
+              entitySelectorTemplate: type(rabbitmq:vhost),toRelationships.isChildOf($(entityConditions))
+              displayName: Virtual Host
+
+
+  - entityType: rabbitmq:node
+    listSettings:
+      staticContent:
+        showGlobalFilter: false
+        header:
+          title: RabbitMQ Nodes
+          description: List of RabbitMQ Nodes
+          icon: server
+        breadcrumbs:
+          - type: NOOP
+            displayName: RabbitMQ
+          - type: ENTITY_LIST_REF
+            displayName: Clusters
+            entityType: rabbitmq:cluster
+          - type: ENTITY_LIST_REF
+            displayName: Nodes
+            entityType: rabbitmq:node
+      layout:
+        autoGenerate: false
+        cards:
+          - key: rabbitmq_node_list_self
+            type: ENTITIES_LIST
+          - type: INJECTIONS
+    detailsSettings:
+      staticContent:
+        showProblems: true
+        showProperties: true
+        showTags: true
+        showGlobalFilter: false
+        showAddTag: true
+        breadcrumbs:
+          - type: NOOP
+            displayName: RabbitMQ
+          - type: ENTITY_LIST_REF
+            displayName: Clusters
+            entityType: rabbitmq:cluster
+          - type: ENTITY_REF
+            entitySelectorTemplate: type(rabbitmq:cluster),toRelationships.runsOn($(entityConditions))
+          - type: ENTITY_LIST_REF
+            displayName: Nodes
+            entityType: rabbitmq:node
+      layout:
+        autoGenerate: false
+        cards:
+          - key: rabbitmq_node_charts_overview
+            type: CHART_GROUP
+          - key: rabbitmq_node_queues
+            type: ENTITIES_LIST
+          - type: INJECTIONS
+    
+    chartsCards:
+      - key: rabbitmq_node_charts_overview
+        mode: NORMAL
+        numberOfVisibleCharts: 8
+        displayName: Node Overview
+        description: Overview of the RabbitMQ Node
+        charts:
+          - displayName: Memory Used %
+            visualizationType: SINGLE_VALUE
+            singleValueConfig:
+              metric:
+                metricSelector: ((rabbitmq.node.mem_used)/(rabbitmq.node.mem_limit) * 100):setUnit(Percent):last
+          - displayName: Memory
+            visualizationType: GRAPH_CHART
+            graphChartConfig:
+              metrics:
+                - metricSelector: rabbitmq.node.mem_used
+                  visualization:
+                    themeColor: BLUE
+                - metricSelector: rabbitmq.node.mem_limit
+                  visualization:
+                    themeColor: RED
+          - displayName: File Descriptors
+            visualizationType: GRAPH_CHART
+            graphChartConfig:
+              metrics:
+                - metricSelector: rabbitmq.node.fd_used
+                  visualization:
+                    themeColor: BLUE
+                - metricSelector: rabbitmq.node.fd_total
+                  visualization:
+                    themeColor: RED
+          - displayName: Sockets
+            visualizationType: GRAPH_CHART
+            graphChartConfig:
+              metrics:
+                - metricSelector: rabbitmq.node.sockets_used
+                  visualization:
+                    themeColor: BLUE
+                - metricSelector: rabbitmq.node.sockets_total
+                  visualization:
+                    themeColor: RED
+          - displayName: Disk Free
+            visualizationType: GRAPH_CHART
+            graphChartConfig:
+              metrics:
+                - metricSelector: rabbitmq.node.disk_free
+                  visualization:
+                    themeColor: TURQUOISE
+                    seriesType: AREA
+
+          - displayName: Partitions
+            visualizationType: SINGLE_VALUE
+            singleValueConfig:
+              metric:
+                metricSelector: rabbitmq.node.partitions:last
+
+          - displayName: Uptime
+            visualizationType: SINGLE_VALUE
+            singleValueConfig:
+              metric:
+                metricSelector: rabbitmq.node.uptime:last
+                
+          - displayName: Garbage Collections
+            visualizationType: GRAPH_CHART
+            graphChartConfig:
+              metrics:
+                - metricSelector: rabbitmq.node.gc_num.count
+                  visualization:
+                    themeColor: ORANGE
+                    seriesType: COLUMN
+  
+    entitiesListCards:
+      - key: rabbitmq_node_list_self
+        displayName: Nodes
+        pageSize: 10
+        entitiesLimit: 500
+        displayCharts: false
+        enableDetailsExpandability: false
+        numberOfVisibleCharts: 2
+        displayIcons: true
+        columns:
+          - type: RELATION
+            relation:
+              displayName: Cluster
+              entitySelectorTemplate: type(rabbitmq:cluster),toRelationships.runsOn($(entityConditions))
+          - type: ATTRIBUTE
+            attribute:
+              key: rabbitmq_version
+              displayName: RabbitMQ Version
+          - type: ATTRIBUTE
+            attribute:
+              key: dt.ip_addresses
+              displayName: IP Addresses
+          - type: ATTRIBUTE
+            attribute:
+              key: dt.dns_names
+              displayName: DNS Names
+          - type: RELATION
+            relation:
+              entitySelectorTemplate: type(rabbitmq:queue),fromRelationships.runsOn($(entityConditions))
+              displayName: Queues
+              displayAmount: true
+              fallbackMessage: No queues found
+
+      - key: rabbitmq_node_queues
+        displayName: Queues
+        pageSize: 20
+        entitiesLimit: 100
+        displayCharts: false
+        enableDetailsExpandability: false
+        numberOfVisibleCharts: 4
+        displayIcons: true
+
+        # Queues that run on nodes that run on this cluster
+        entitySelectorTemplate: type(rabbitmq:queue),fromRelationships.runsOn($(entityConditions))
+        
+        charts:
+          - displayName: Queue Depth
+            visualizationType: GRAPH_CHART
+            graphChartConfig:
+              metrics:
+                - metricSelector: rabbitmq.queue.messages:last
+                  visualization:
+                    displayName: Queue depth
+          
+          - displayName: Message Bytes
+            visualizationType: GRAPH_CHART
+            graphChartConfig:
+              metrics:
+                - metricSelector: rabbitmq.queue.message_bytes:last:fold
+                  visualization:
+                    displayName: Message Bytes
+
+          - displayName: Published 
+            visualizationType: GRAPH_CHART
+            graphChartConfig:
+              metrics:
+                - metricSelector: rabbitmq.queue.publish.count:splitBy():sum:fold
+                  visualization:
+                    displayName: Published
+          
+          - displayName: Delivered 
+            visualizationType: GRAPH_CHART
+            graphChartConfig:
+              metrics:
+                - metricSelector: rabbitmq.queue.messages_delivered.count:splitBy():sum:fold
+                  visualization:
+                    displayName: Delivered            
+        columns:
+          - type: ATTRIBUTE
+            attribute:
+              key: type
+              displayName: Type
+          - type: ATTRIBUTE
+            attribute:
+              key: queue_state
+              displayName: State              
+          - type: RELATION
+            relation:
+              entitySelectorTemplate: type(rabbitmq:vhost),toRelationships.isChildOf($(entityConditions))
+              displayName: Virtual Host
+          - type: RELATION
+            relation:
+              entitySelectorTemplate: type(rabbitmq:cluster),toRelationships.runsOn(type(rabbitmq:node),toRelationships.runsOn($(entityConditions)))
+              displayName: Cluster
+
+
+  - entityType: rabbitmq:vhost
+    listSettings:
+      staticContent:
+        showGlobalFilter: false
+        header:
+          title: RabbitMQ Virtual Hosts
+          description: List of RabbitMQ Virtual Hosts
+          icon: webserver
+        breadcrumbs:
+          - type: NOOP
+            displayName: RabbitMQ
+          - type: ENTITY_LIST_REF
+            displayName: Clusters
+            entityType: rabbitmq:cluster
+          - type: ENTITY_LIST_REF
+            displayName: Virtual Hosts
+            entityType: rabbitmq:vhost
+      layout:
+        autoGenerate: false
+        cards:
+          - key: rabbitmq_vhosts_list_self
+            type: ENTITIES_LIST
+          - type: INJECTIONS
+    detailsSettings:
+      staticContent:
+        showProblems: true
+        showProperties: true
+        showTags: true
+        showGlobalFilter: false
+        showAddTag: true
+        breadcrumbs:
+          - type: NOOP
+            displayName: RabbitMQ
+          - type: ENTITY_LIST_REF
+            displayName: Clusters
+            entityType: rabbitmq:cluster
+          - type: ENTITY_REF
+            entitySelectorTemplate: type(rabbitmq:cluster),toRelationships.runsOn($(entityConditions))
+          - type: ENTITY_LIST_REF
+            displayName: Virtual Hosts
+            entityType: rabbitmq:vhost
+      layout:
+        autoGenerate: false
+        cards:
+          - key: rabbitmq_vhost_charts_overview
+            type: CHART_GROUP
+          - key: rabbitmq_vhost_queues
+            type: ENTITIES_LIST
+          - type: INJECTIONS
+
+    chartsCards:
+      - key: rabbitmq_vhost_charts_overview
+        mode: NORMAL
+        numberOfVisibleCharts: 2
+        displayName: Virtual Host Overview
+        description: Overview of the RabbitMQ Virtual Host
+        charts:
+          - displayName: Messages
+            visualizationType: GRAPH_CHART
+            graphChartConfig:
+              metrics:
+                - metricSelector: rabbitmq.vhost.messages
+                  visualization:
+                    seriesType: AREA
+                    themeColor: GREEN
+          - displayName: Network Traffic
+            visualizationType: GRAPH_CHART
+            graphChartConfig:
+              metrics:
+                - metricSelector: rabbitmq.vhost.recv_oct.count
+                
+                  visualization:
+                    displayName: Received
+                    seriesType: AREA
+                    themeColor: BLUE
+                - metricSelector: (-1 * rabbitmq.vhost.send_oct.count):setUnit(Byte)
+                  visualization:
+                    displayName: Sent
+                    seriesType: AREA
+                    themeColor: RED
+                
+   
+
+    entitiesListCards:
+      - key: rabbitmq_vhosts_list_self
+        displayName: Virtual Hosts
+        pageSize: 10
+        entitiesLimit: 500
+        displayCharts: false
+        enableDetailsExpandability: false
+        numberOfVisibleCharts: 2
+        displayIcons: true
+        columns:
+          - type: RELATION
+            relation:
+              displayName: Cluster
+              entitySelectorTemplate: type(rabbitmq:cluster),toRelationships.runsOn($(entityConditions))
+          - type: ATTRIBUTE
+            attribute:
+              key: rabbitmq_version
+              displayName: RabbitMQ Version
+          - type: ATTRIBUTE
+            attribute:
+              key: description
+              displayName: Description
+          - type: RELATION
+            relation:
+              entitySelectorTemplate: type(rabbitmq:queue),fromRelationships.isChildOf($(entityConditions))
+              displayName: Queues
+              displayAmount: true
+              fallbackMessage: No queues found
+
+      - key: rabbitmq_vhost_queues
+        displayName: Queues
+        pageSize: 20
+        entitiesLimit: 100
+        displayCharts: false
+        enableDetailsExpandability: false
+        numberOfVisibleCharts: 4
+        displayIcons: true
+
+        # Queues that run on nodes that run on this cluster
+        entitySelectorTemplate: type(rabbitmq:queue),fromRelationships.isChildOf($(entityConditions))
+        
+        charts:
+          - displayName: Queue Depth
+            visualizationType: GRAPH_CHART
+            graphChartConfig:
+              metrics:
+                - metricSelector: rabbitmq.queue.messages:last
+                  visualization:
+                    displayName: Queue depth
+          
+          - displayName: Message Bytes
+            visualizationType: GRAPH_CHART
+            graphChartConfig:
+              metrics:
+                - metricSelector: rabbitmq.queue.message_bytes:last:fold
+                  visualization:
+                    displayName: Message Bytes
+
+          - displayName: Published 
+            visualizationType: GRAPH_CHART
+            graphChartConfig:
+              metrics:
+                - metricSelector: rabbitmq.queue.publish.count:splitBy():sum:fold
+                  visualization:
+                    displayName: Published
+          
+          - displayName: Delivered 
+            visualizationType: GRAPH_CHART
+            graphChartConfig:
+              metrics:
+                - metricSelector: rabbitmq.queue.messages_delivered.count:splitBy():sum:fold
+                  visualization:
+                    displayName: Delivered
+                
+        columns:
+          - type: ATTRIBUTE
+            attribute:
+              key: type
+              displayName: Type
+          - type: ATTRIBUTE
+            attribute:
+              key: queue_state
+              displayName: State              
+          - type: RELATION
+            relation:
+              entitySelectorTemplate: type(rabbitmq:node),toRelationships.runsOn($(entityConditions))
+              displayName: Node
+          - type: RELATION
+            relation:
+              entitySelectorTemplate: type(rabbitmq:cluster),toRelationships.runsOn(type(rabbitmq:node),toRelationships.runsOn($(entityConditions)))
+              displayName: Cluster
+
+
+  - entityType: rabbitmq:queue
+    listSettings:
+      staticContent:
+        showGlobalFilter: false
+        header:
+          title: RabbitMQ Queues
+          description: List of RabbitMQ Queues
+          icon: queue
+        breadcrumbs:
+          - type: NOOP
+            displayName: RabbitMQ
+          - type: ENTITY_LIST_REF
+            displayName: Clusters
+            entityType: rabbitmq:cluster
+          - type: ENTITY_LIST_REF
+            displayName: Nodes
+            entityType: rabbitmq:node
+          - type: ENTITY_LIST_REF
+            displayName: Virtual Hosts
+            entityType: rabbitmq:vhost
+          - type: ENTITY_LIST_REF
+            displayName: Queues
+            entityType: rabbitmq:queue
+      layout:
+        autoGenerate: false
+        cards:
+          - key: rabbitmq_queue_list_overview
+            type: CHART_GROUP
+          - key: rabbitmq_queue_list_self
+            type: ENTITIES_LIST
+          - type: INJECTIONS
+    detailsSettings:
+      staticContent:
+        showProblems: true
+        showProperties: true
+        showTags: true
+        showGlobalFilter: false
+        showAddTag: true
+        breadcrumbs:
+          - type: NOOP
+            displayName: RabbitMQ
+
+          # Clusters
+          - type: ENTITY_LIST_REF
+            displayName: Clusters
+            entityType: rabbitmq:cluster
+          - type: ENTITY_REF
+            entitySelectorTemplate: type(rabbitmq:cluster),toRelationships.runsOn(type(rabbitmq:node),toRelationships.runsOn($(entityConditions)))
+          
+          # Nodes
+          - type: ENTITY_LIST_REF
+            displayName: Nodes
+            entityType: rabbitmq:node
+          - type: ENTITY_REF
+            entitySelectorTemplate: type(rabbitmq:node),toRelationships.runsOn($(entityConditions))
+          
+          # Virtual Hosts
+          - type: ENTITY_LIST_REF
+            displayName: Virtual Hosts
+            entityType: rabbitmq:vhost
+          - type: ENTITY_REF
+            entitySelectorTemplate: type(rabbitmq:vhost),toRelationships.isChildOf($(entityConditions))
+
+          # Queues
+          - type: ENTITY_LIST_REF
+            displayName: Queues
+            entityType: rabbitmq:queue
+
+      layout:
+        autoGenerate: false
+        cards:
+          - key: rabbitmq_queue_charts_overview
+            type: CHART_GROUP
+          - key: rabbitmq_queue_messages
+            type: CHART_GROUP
+          - key: rabbitmq_queue_vhost
+            type: ENTITIES_LIST
+          - key: rabbitmq_queue_node
+            type: ENTITIES_LIST
+          - type: INJECTIONS
+
+    chartsCards:
+      - key: rabbitmq_queue_list_overview
+        mode: NORMAL
+        numberOfVisibleCharts: 4
+        displayName: Queues Overview
+        charts:
+          - displayName: Messages
+            visualizationType: GRAPH_CHART
+            detailsMessage: Queue depth, should be zero for a healthy queue.
+            graphChartConfig:
+              metrics:
+                - metricSelector: rabbitmq.queue.messages:splitBy()
+                  visualization:
+                    displayName: Queue depth
+                    themeColor: RED
+                    seriesType: COLUMN
+          - displayName: Published vs Delivered
+            visualizationType: GRAPH_CHART
+            graphChartConfig:
+              stacked: true
+              visualization:
+                seriesType: AREA
+              metrics:
+                - metricSelector: rabbitmq.queue.publish.count:splitBy():sum
+                  visualization:
+                    displayName: Published
+                - metricSelector: rabbitmq.queue.messages_delivered.count:splitBy():sum
+                  visualization:
+                    displayName: Delivered
+          - displayName: Consumers
+            visualizationType: GRAPH_CHART
+            graphChartConfig:
+              metrics:
+                - metricSelector: rabbitmq.queue.consumers:splitBy()
+                  visualization:
+                    displayName: Consumers
+                    themeColor: GREEN
+                    seriesType: COLUMN
+          - displayName: Memory Used
+            visualizationType: GRAPH_CHART
+            graphChartConfig:
+              metrics:
+                - metricSelector: rabbitmq.queue.memory:splitBy()
+                  visualization:
+                    displayName: Memory
+                    themeColor: BLUE
+                    seriesType: AREA
+
+
+      - key: rabbitmq_queue_charts_overview
+        mode: NORMAL
+        numberOfVisibleCharts: 4
+        displayName: Overview
+        charts:
+          - displayName: Queue Depth
+            visualizationType: SINGLE_VALUE
+            singleValueConfig:
+              thresholds:
+                - value: 1
+                  color: "#FF0000"
+              metric:
+                metricSelector: rabbitmq.queue.messages:last
+          - displayName: Memory
+            visualizationType: SINGLE_VALUE
+            singleValueConfig:
+              showSparkline: true
+              foldTransformation: LAST_VALUE
+              metric:
+                metricSelector: rabbitmq.queue.memory
+          - displayName: Consumers
+            visualizationType: SINGLE_VALUE
+            singleValueConfig:
+              showSparkline: true
+              foldTransformation: LAST_VALUE
+              metric:
+                metricSelector: rabbitmq.queue.consumers
+          - displayName: Message Bytes
+            visualizationType: GRAPH_CHART
+            graphChartConfig:
+              metrics:
+                - metricSelector: rabbitmq.queue.message_bytes:splitBy()
+                  visualization:
+                    displayName: Message Bytes
+                    themeColor: BLUE
+                    seriesType: AREA
+
+      - key: rabbitmq_queue_messages
+        mode: NORMAL
+        numberOfVisibleCharts: 4
+        displayName: Messages
+        charts:
+          - displayName: Published vs Delivered
+            visualizationType: GRAPH_CHART
+            graphChartConfig:
+              stacked: true
+              defaultAggregation: SUM
+              metrics:
+                - metricSelector: rabbitmq.queue.messages_delivered.count:splitBy():sum
+                  visualization:
+                    seriesType: COLUMN
+                    themeColor: GREEN
+                    displayName: Deliver
+                - metricSelector: rabbitmq.queue.publish.count:splitBy():sum
+                  visualization:
+                    seriesType: COLUMN
+                    themeColor: BLUE
+                    displayName: Publish
+          - displayName: Redelivered
+            visualizationType: GRAPH_CHART
+            graphChartConfig:
+              stacked: true
+              defaultAggregation: SUM
+              metrics:
+                - metricSelector: rabbitmq.queue.redeliver.count:splitBy():sum
+                  visualization:
+                    seriesType: COLUMN
+                    themeColor: ORANGE
+                    displayName: Redelivered
+          - displayName: Dropped and Returned
+            visualizationType: GRAPH_CHART
+            graphChartConfig:
+              stacked: true
+              defaultAggregation: SUM
+              visualization:
+                themeColor: RED
+                seriesType: AREA
+              metrics:
+                - metricSelector: rabbitmq.queue.drop_unroutable.count:splitBy():sum
+                  visualization:
+                    displayName: Drop Unroutable
+                - metricSelector: rabbitmq.queue.return_unroutable.count:splitBy():sum
+                  visualization:
+                    displayName: Return Unroutable
+          - displayName: Ready and Unacknowledged
+            visualizationType: GRAPH_CHART
+            graphChartConfig:
+              stacked: true
+              defaultAggregation: SUM
+              visualization:
+                themeColor: TURQUOISE
+                seriesType: AREA
+              metrics:
+                - metricSelector: rabbitmq.queue.messages_ready:splitBy():sum
+                  visualization:
+                    displayName: Ready
+                - metricSelector: rabbitmq.queue.messages_unacknowledged:splitBy():sum
+                  visualization:
+                    displayName: Unacknowledged
+
+    entitiesListCards:
+      - key: rabbitmq_queue_list_self
+        displayName: Queues
+        description: List of RabbitMQ Queues
+        pageSize: 25
+        entitiesLimit: 1000
+        displayCharts: false
+        enableDetailsExpandability: false
+        numberOfVisibleCharts: 3
+        displayIcons: true
+        columns:
+          - type: RELATION
+            relation:
+              displayName: Cluster
+              entitySelectorTemplate: type(rabbitmq:cluster),toRelationships.runsOn(type(rabbitmq:node),toRelationships.runsOn($(entityConditions)))
+          - type: RELATION
+            relation:
+              displayName: Node
+              entitySelectorTemplate: type(rabbitmq:node),toRelationships.runsOn($(entityConditions))
+          - type: RELATION
+            relation:
+              displayName: Virtual Host
+              entitySelectorTemplate: type(rabbitmq:vhost),toRelationships.isChildOf($(entityConditions))
+          - type: ATTRIBUTE
+            attribute:
+              key: queue_state
+              displayName: State
+        
+        charts:
+          - displayName: Messages
+            visualizationType: GRAPH_CHART
+            graphChartConfig:
+              metrics:
+                - metricSelector: rabbitmq.queue.messages:last
+                  visualization:
+                    displayName: Queue depth
+          - displayName: Published
+            visualizationType: GRAPH_CHART
+            graphChartConfig:
+              metrics:
+                - metricSelector: rabbitmq.queue.publish.count:splitBy():sum:fold
+                  visualization:
+                    displayName: Published
+          - displayName: Delivered
+            visualizationType: GRAPH_CHART
+            graphChartConfig:
+              metrics:
+                - metricSelector: rabbitmq.queue.messages_delivered.count:splitBy():sum:fold
+                  visualization:
+                    displayName: Delivered
+
+      - key: rabbitmq_queue_node
+        displayName: Node
+        pageSize: 5
+        entitiesLimit: 100
+        displayCharts: false
+        enableDetailsExpandability: false
+        numberOfVisibleCharts: 2
+        displayIcons: true
+        entitySelectorTemplate: type(rabbitmq:node),toRelationships.runsOn($(entityConditions))
+        
+        charts:
+          - displayName: Memory Used
+            visualizationType: GRAPH_CHART
+            graphChartConfig:
+              metrics:
+                - metricSelector: rabbitmq.node.mem_used:last
+          
+          - displayName: Disk Free
+            visualizationType: GRAPH_CHART
+            graphChartConfig:
+              metrics:
+                - metricSelector: rabbitmq.node.disk_free:last
+
+          - displayName: Sockets Used
+            visualizationType: GRAPH_CHART
+            graphChartConfig:
+              metrics:
+                - metricSelector: rabbitmq.node.sockets_used:last
+
+          - displayName: Network Partitions
+            visualizationType: GRAPH_CHART
+            graphChartConfig:
+              metrics:
+                - metricSelector: rabbitmq.node.partitions:last
+                
+        columns:
+          - type: ATTRIBUTE
+            attribute:
+              key: rabbitmq_version
+              displayName: RabbitMQ Version
+          - type: ATTRIBUTE
+            attribute:
+              key: dt.ip_addresses
+              displayName: IP Addresses
+          - type: RELATION
+            relation:
+              # Queues that run on nodes that run on this cluster
+              entitySelectorTemplate: type(rabbitmq:cluster),toRelationships.runsOn($(entityConditions))
+              displayName: Cluster
+              fallbackMessage: No cluster found
+            
+      - key: rabbitmq_queue_vhost
+        displayName: Virtual Host
+        pageSize: 5
+        entitiesLimit: 100
+        displayCharts: false
+        enableDetailsExpandability: false
+        numberOfVisibleCharts: 2
+        displayIcons: true
+        entitySelectorTemplate: type(rabbitmq:vhost),toRelationships.isChildOf($(entityConditions))
+        
+        charts:
+          - displayName: Messages
+            visualizationType: GRAPH_CHART
+            graphChartConfig:
+              metrics:
+                - metricSelector: rabbitmq.vhost.messages:last
+          
+          - displayName: Bytes Received
+            visualizationType: GRAPH_CHART
+            graphChartConfig:
+              metrics:
+                - metricSelector: rabbitmq.vhost.recv_oct.count:splitBy():sum:fold
+
+          - displayName: Bytes Sent
+            visualizationType: GRAPH_CHART
+            graphChartConfig:
+              metrics:
+                - metricSelector: rabbitmq.vhost.send_oct.count:splitBy():sum:fold
+                
+        columns:
+          - type: ATTRIBUTE
+            attribute:
+              key: description
+              displayName: Description
+          - type: RELATION
+            relation:
+              entitySelectorTemplate: type(rabbitmq:cluster),toRelationships.runsOn($(entityConditions))
+              displayName: Cluster
+              fallbackMessage: No cluster found
+
+dashboards:
+  - path: dashboards/overview_dashboard.json

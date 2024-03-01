@@ -1,0 +1,165 @@
+{
+  "types": {
+    "dynatrace.datasource.python:rabbitmq_extension-endpoint": {
+      "type": "object",
+      "displayName": "RabbitMQ Endpoint",
+      "summaryPattern": "RabbitMQ {cluster_name}",
+      "properties": {
+        "cluster_name": {
+          "displayName": "Cluster name",
+          "description": "A friendly name for this RabbitMQ cluster or node.",
+          "type": "text",
+          "nullable": false,
+          "default": "",
+          "constraints": [
+            {
+              "type": "LENGTH",
+              "minLength": 1,
+              "maxLength": 500
+            }
+          ],
+          "maxItems": 1
+        },
+        "nodes": {
+          "displayName": "Nodes",
+          "description": "The list of nodes management URLs for this cluster, can also use a single node/load balancer.",
+          "documentation": "Dynatrace will attempt to use one of the nodes in the list to connect to the RabbitMQ cluster.\n\nIf the connection fails, Dynatrace will attempt to use the next node in the list.\n\nIf the connection to all nodes fails, the extension will report an error.",
+          "type": "list",
+          "nullable": false,
+          "default": ["https://localhost:15671"],
+          "items": {
+            "type": "text",
+            "subType": "url",
+            "displayName": "Node URL",
+            "description": "The URL of a RabbitMQ node. Example: `https://localhost:15671`",
+            "constraints": [
+              {
+                "type": "PATTERN",
+                "customMessage": "The URL must start with http:// or https://",
+                "pattern": "^(http|https)://?.*$"
+              }
+            ]
+          },
+          "minObjects": 1,
+          "maxObjects": 10
+        },
+        "user": {
+          "displayName": "Username",
+          "description": "User with **monitoring** permissions. Refer to documentation [here](https://www.rabbitmq.com/management.html#permissions)",
+          "type": "text",
+          "nullable": false,
+          "default": "",
+          "constraints": [
+            {
+              "type": "LENGTH",
+              "minLength": 1,
+              "maxLength": 500
+            }
+          ],
+          "maxItems": 1
+        },
+        "password": {
+          "displayName": "Password",
+          "type": "secret",
+          "nullable": false,
+          "default": "",
+          "constraints": [
+            {
+              "type": "LENGTH",
+              "minLength": 1,
+              "maxLength": 500
+            }
+          ],
+          "maxItems": 1
+        },
+        "queues_include": {
+          "displayName": "Queues to monitor",
+          "description": "A list of queues to monitor, accepts regular expressions, example: `^my-queue$`.",
+          "type": "list",
+          "default": [".*"],
+          "items": {
+            "type": "text",
+            "displayName": "Queue pattern",
+            "description": "Regular expression to match queue names. Example: `^my-queue$`",
+            "constraints": [
+              {
+                "type": "LENGTH",
+                "minLength": 1,
+                "maxLength": 500
+              }
+            ]
+          },
+          "nullable": false,
+          "maxItems": 500
+        }
+      }
+    },
+    "pythonRemote": {
+      "type": "object",
+      "displayName": "RabbitMQ (Remote)",
+      "properties": {
+        "endpoints": {
+          "displayName": "Configuration",
+          "type": "list",
+          "items": {
+            "type": {
+              "$ref": "#/types/dynatrace.datasource.python:rabbitmq_extension-endpoint"
+            }
+          },
+          "nullable": false,
+          "minItems": 1,
+          "maxItems": 100,
+          "metaData": {
+            "addItemButton": "Add endpoint"
+          }
+        }
+      }
+    },
+    "pythonLocal": {
+      "type": "object",
+      "displayName": "RabbitMQ (Local)",
+      "properties": {
+        "endpoints": {
+          "displayName": "Configuration",
+          "type": "list",
+          "items": {
+            "type": {
+              "$ref": "#/types/dynatrace.datasource.python:rabbitmq_extension-endpoint"
+            }
+          },
+          "nullable": false,
+          "minItems": 1,
+          "maxItems": 100,
+          "metaData": {
+            "addItemButton": "Add endpoint"
+          }
+        }
+      }
+    }
+  },
+  "dynatrace": "1",
+  "description": "rabbitmq_extension configuration",
+  "schemaId": "python-extension.activation",
+  "displayName": "rabbitmq_extension configuration",
+  "ownerProductManagement": "dynatrace",
+  "ownerDevelopment": "dynatrace",
+  "maturity": "GENERAL_AVAILABILITY",
+  "allowedScopes": [
+    "tenant"
+  ],
+  "multiObject": false,
+  "properties": {
+    "pythonLocal": {
+      "displayName": "Python Local Extension",
+      "type": {
+        "$ref": "#/types/pythonLocal"
+      }
+    },
+    "pythonRemote": {
+      "displayName": "Python Remote Extension",
+      "type": {
+        "$ref": "#/types/pythonRemote"
+      }
+    }
+  }
+}

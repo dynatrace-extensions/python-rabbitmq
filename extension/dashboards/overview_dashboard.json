@@ -1,0 +1,1093 @@
+{
+  "dashboardMetadata": {
+    "name": "RabbitMQ Overview",
+    "shared": true,
+    "owner": "Dynatrace",
+    "tags": [
+      "Overview",
+      "Extension"
+    ],
+    "preset": true,
+    "popularity": 1
+  },
+  "tiles": [
+    {
+      "name": "Markdown",
+      "nameSize": "",
+      "tileType": "MARKDOWN",
+      "configured": true,
+      "bounds": {
+        "top": 0,
+        "left": 152,
+        "width": 1254,
+        "height": 76
+      },
+      "tileFilter": {},
+      "markdown": "# RabbitMQ Overview\n***"
+    },
+    {
+      "name": "Image",
+      "nameSize": "",
+      "tileType": "IMAGE",
+      "configured": true,
+      "bounds": {
+        "top": 0,
+        "left": 0,
+        "width": 152,
+        "height": 152
+      },
+      "tileFilter": {},
+      "image": "data:image/webp;base64,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"
+    },
+    {
+      "name": "Markdown",
+      "tileType": "MARKDOWN",
+      "configured": true,
+      "bounds": {
+        "top": 152,
+        "left": 0,
+        "width": 304,
+        "height": 38
+      },
+      "tileFilter": {},
+      "markdown": "## Currently monitoring\n"
+    },
+    {
+      "name": "Markdown",
+      "nameSize": "",
+      "tileType": "MARKDOWN",
+      "configured": true,
+      "bounds": {
+        "top": 76,
+        "left": 152,
+        "width": 1254,
+        "height": 76
+      },
+      "tileFilter": {},
+      "markdown": "## ⚙️ [Configure](/ui/hub/ext/com.dynatrace.rabbitmq)\n## 🔗 Navigate to entities: [Cluster](ui/entity/list/rabbitmq:cluster) | [Node](ui/entity/list/rabbitmq:node) | [Virtual Host](ui/entity/list/rabbitmq:vhost) | [Queue](ui/entity/list/rabbitmq:queue)"
+    },
+    {
+      "name": "Title Cluster",
+      "tileType": "MARKDOWN",
+      "configured": true,
+      "bounds": {
+        "top": 380,
+        "left": 0,
+        "width": 1406,
+        "height": 38
+      },
+      "tileFilter": {},
+      "markdown": "## Cluster"
+    },
+    {
+      "name": "Cluster",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {
+        "top": 190,
+        "left": 0,
+        "width": 152,
+        "height": 152
+      },
+      "tileFilter": {},
+      "customName": "Single value",
+      "queries": [
+        {
+          "id": "A",
+          "timeAggregation": "DEFAULT",
+          "metricSelector": "rabbitmq.cluster.messages:splitBy(\"dt.entity.rabbitmq:cluster\"):auto:splitBy():count",
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "SINGLE_VALUE",
+        "global": {},
+        "rules": [
+          {
+            "matcher": "A:",
+            "properties": {
+              "color": "DEFAULT",
+              "seriesType": "COLUMN"
+            },
+            "seriesOverrides": []
+          }
+        ],
+        "axes": {
+          "xAxis": {
+            "displayName": "",
+            "visible": true
+          },
+          "yAxes": [
+            {
+              "displayName": "",
+              "visible": true,
+              "min": "AUTO",
+              "max": "AUTO",
+              "position": "LEFT",
+              "queryIds": [ "A" ],
+              "defaultAxis": true
+            }
+          ]
+        },
+        "heatmapSettings": {},
+        "singleValueSettings": {
+          "showSparkLine": false
+        },
+        "thresholds": [
+          {
+            "axisTarget": "LEFT",
+            "rules": [
+              { "color": "#7dc540" },
+              { "color": "#f5d30f" },
+              { "color": "#dc172a" }
+            ],
+            "visible": true
+          }
+        ],
+        "tableSettings": {},
+        "graphChartSettings": {
+          "connectNulls": false
+        },
+        "honeycombSettings": {}
+      }
+    },
+    {
+      "name": "Messages",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {
+        "top": 418,
+        "left": 570,
+        "width": 418,
+        "height": 266
+      },
+      "tileFilter": {},
+      "customName": "Data explorer results",
+      "queries": [
+        {
+          "id": "A",
+          "metric": "rabbitmq.cluster.messages",
+          "spaceAggregation": "AVG",
+          "timeAggregation": "DEFAULT",
+          "splitBy": ["dt.entity.rabbitmq:cluster"],
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "GRAPH_CHART",
+        "global": {},
+        "rules": [
+          {
+            "matcher": "A:",
+            "properties": {"color": "DEFAULT"},
+            "seriesOverrides": []
+          }
+        ],
+        "axes": {
+          "xAxis": {"visible": true},
+          "yAxes": []
+        },
+        "heatmapSettings": {},
+        "thresholds": [
+          {
+            "axisTarget": "LEFT",
+            "rules": [
+              {"color": "#7dc540"},
+              {"color": "#f5d30f"},
+              {"color": "#dc172a"}
+            ],
+            "visible": true
+          }
+        ],
+        "tableSettings": {},
+        "graphChartSettings": {"connectNulls": false},
+        "honeycombSettings": {}
+      }
+    },
+    {
+      "name": "Connections",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {
+        "top": 418,
+        "left": 988,
+        "width": 418,
+        "height": 266
+      },
+      "tileFilter": {},
+      "customName": "Data explorer results",
+      "queries": [
+        {
+          "id": "A",
+          "metric": "rabbitmq.cluster.connections",
+          "spaceAggregation": "AVG",
+          "timeAggregation": "DEFAULT",
+          "splitBy": ["dt.entity.rabbitmq:cluster"],
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "GRAPH_CHART",
+        "global": {},
+        "rules": [
+          {
+            "matcher": "A:",
+            "properties": {"color": "DEFAULT"},
+            "seriesOverrides": []
+          }
+        ],
+        "axes": {
+          "xAxis": {"visible": true},
+          "yAxes": []
+        },
+        "heatmapSettings": {},
+        "thresholds": [
+          {
+            "axisTarget": "LEFT",
+            "rules": [
+              {"color": "#7dc540"},
+              {"color": "#f5d30f"},
+              {"color": "#dc172a"}
+            ],
+            "visible": true
+          }
+        ],
+        "tableSettings": {},
+        "graphChartSettings": {"connectNulls": false},
+        "honeycombSettings": {}
+      }
+    },
+    {
+      "name": "Cluster",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {
+        "top": 418,
+        "left": 0,
+        "width": 570,
+        "height": 266
+      },
+      "tileFilter": {},
+      "customName": "Table",
+      "queries": [
+                {
+          "id": "A",
+          "metric": "rabbitmq.cluster.messages",
+          "spaceAggregation": "AVG",
+          "timeAggregation": "DEFAULT",
+          "splitBy": [ "dt.entity.rabbitmq:cluster" ],
+          "enabled": true
+        },
+        {
+          "id": "B",
+          "metric": "rabbitmq.cluster.connections",
+          "spaceAggregation": "AVG",
+          "timeAggregation": "DEFAULT",
+          "splitBy": [ "dt.entity.rabbitmq:cluster" ],
+          "enabled": true
+        },
+        {
+          "id": "C",
+          "metric": "rabbitmq.cluster.consumers",
+          "spaceAggregation": "AVG",
+          "timeAggregation": "DEFAULT",
+          "splitBy": [ "dt.entity.rabbitmq:cluster" ],
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "TABLE",
+        "global": {},
+        "rules": [
+          {
+            "matcher": "A:",
+            "properties": {"color": "DEFAULT"},
+            "seriesOverrides": []
+          }
+        ],
+        "axes": {
+          "xAxis": {"visible": true},
+          "yAxes": []
+        },
+        "heatmapSettings": {},
+        "thresholds": [
+          {
+            "axisTarget": "LEFT",
+            "rules": [
+              {"color": "#7dc540"},
+              {"color": "#f5d30f"},
+              {"color": "#dc172a"}
+            ],
+            "visible": true
+          }
+        ],
+        "tableSettings": {},
+        "graphChartSettings": {"connectNulls": false},
+        "honeycombSettings": {}
+      }
+    },
+    {
+      "name": "Title Node",
+      "tileType": "MARKDOWN",
+      "configured": true,
+      "bounds": {
+        "top": 684,
+        "left": 0,
+        "width": 1406,
+        "height": 38
+      },
+      "tileFilter": {},
+      "markdown": "## Node"
+    },
+    {
+      "name": "Node",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {
+        "top": 190,
+        "left": 152,
+        "width": 152,
+        "height": 152
+      },
+      "tileFilter": {},
+      "customName": "Single value",
+      "queries": [
+        {
+          "id": "A",
+          "timeAggregation": "DEFAULT",
+          "metricSelector": "rabbitmq.queue.messages:splitBy(\"dt.entity.rabbitmq:node\"):auto:splitBy():count",
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "SINGLE_VALUE",
+        "global": {},
+        "rules": [
+          {
+            "matcher": "A:",
+            "properties": {
+              "color": "DEFAULT",
+              "seriesType": "COLUMN"
+            },
+            "seriesOverrides": []
+          }
+        ],
+        "axes": {
+          "xAxis": {
+            "displayName": "",
+            "visible": true
+          },
+          "yAxes": [
+            {
+              "displayName": "",
+              "visible": true,
+              "min": "AUTO",
+              "max": "AUTO",
+              "position": "LEFT",
+              "queryIds": [ "A" ],
+              "defaultAxis": true
+            }
+          ]
+        },
+        "heatmapSettings": {},
+        "singleValueSettings": {
+          "showSparkLine": false
+        },
+        "thresholds": [
+          {
+            "axisTarget": "LEFT",
+            "rules": [
+              { "color": "#7dc540" },
+              { "color": "#f5d30f" },
+              { "color": "#dc172a" }
+            ],
+            "visible": true
+          }
+        ],
+        "tableSettings": {},
+        "graphChartSettings": {
+          "connectNulls": false
+        },
+        "honeycombSettings": {}
+      }
+    },
+    {
+      "name": "Messages",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {
+        "top": 722,
+        "left": 570,
+        "width": 418,
+        "height": 266
+      },
+      "tileFilter": {},
+      "customName": "Data explorer results",
+      "queries": [
+        {
+          "id": "A",
+          "metric": "rabbitmq.queue.messages",
+          "spaceAggregation": "AVG",
+          "timeAggregation": "DEFAULT",
+          "splitBy": ["dt.entity.rabbitmq:node"],
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "GRAPH_CHART",
+        "global": {},
+        "rules": [
+          {
+            "matcher": "A:",
+            "properties": {"color": "DEFAULT"},
+            "seriesOverrides": []
+          }
+        ],
+        "axes": {
+          "xAxis": {"visible": true},
+          "yAxes": []
+        },
+        "heatmapSettings": {},
+        "thresholds": [
+          {
+            "axisTarget": "LEFT",
+            "rules": [
+              {"color": "#7dc540"},
+              {"color": "#f5d30f"},
+              {"color": "#dc172a"}
+            ],
+            "visible": true
+          }
+        ],
+        "tableSettings": {},
+        "graphChartSettings": {"connectNulls": false},
+        "honeycombSettings": {}
+      }
+    },
+    {
+      "name": "Memory",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {
+        "top": 722,
+        "left": 988,
+        "width": 418,
+        "height": 266
+      },
+      "tileFilter": {},
+      "customName": "Data explorer results",
+      "queries": [
+        {
+          "id": "A",
+          "metric": "rabbitmq.node.mem_used",
+          "spaceAggregation": "AVG",
+          "timeAggregation": "DEFAULT",
+          "splitBy": ["dt.entity.rabbitmq:node"],
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "GRAPH_CHART",
+        "global": {},
+        "rules": [
+          {
+            "matcher": "A:",
+            "properties": {"color": "DEFAULT"},
+            "seriesOverrides": []
+          }
+        ],
+        "axes": {
+          "xAxis": {"visible": true},
+          "yAxes": []
+        },
+        "heatmapSettings": {},
+        "thresholds": [
+          {
+            "axisTarget": "LEFT",
+            "rules": [
+              {"color": "#7dc540"},
+              {"color": "#f5d30f"},
+              {"color": "#dc172a"}
+            ],
+            "visible": true
+          }
+        ],
+        "tableSettings": {},
+        "graphChartSettings": {"connectNulls": false},
+        "honeycombSettings": {}
+      }
+    },
+    {
+      "name": "Node",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {
+        "top": 722,
+        "left": 0,
+        "width": 570,
+        "height": 266
+      },
+      "tileFilter": {},
+      "customName": "Table",
+      "queries": [
+                {
+          "id": "A",
+          "metric": "rabbitmq.queue.messages",
+          "spaceAggregation": "AVG",
+          "timeAggregation": "DEFAULT",
+          "splitBy": [ "dt.entity.rabbitmq:node" ],
+          "enabled": true
+        },
+        {
+          "id": "B",
+          "metric": "rabbitmq.node.mem_used",
+          "spaceAggregation": "AVG",
+          "timeAggregation": "DEFAULT",
+          "splitBy": [ "dt.entity.rabbitmq:node" ],
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "TABLE",
+        "global": {},
+        "rules": [
+          {
+            "matcher": "A:",
+            "properties": {"color": "DEFAULT"},
+            "seriesOverrides": []
+          }
+        ],
+        "axes": {
+          "xAxis": {"visible": true},
+          "yAxes": []
+        },
+        "heatmapSettings": {},
+        "thresholds": [
+          {
+            "axisTarget": "LEFT",
+            "rules": [
+              {"color": "#7dc540"},
+              {"color": "#f5d30f"},
+              {"color": "#dc172a"}
+            ],
+            "visible": true
+          }
+        ],
+        "tableSettings": {},
+        "graphChartSettings": {"connectNulls": false},
+        "honeycombSettings": {}
+      }
+    },
+    {
+      "name": "Title Virtual Host",
+      "tileType": "MARKDOWN",
+      "configured": true,
+      "bounds": {
+        "top": 988,
+        "left": 0,
+        "width": 1406,
+        "height": 38
+      },
+      "tileFilter": {},
+      "markdown": "## Virtual Host"
+    },
+    {
+      "name": "Virtual Host",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {
+        "top": 190,
+        "left": 304,
+        "width": 152,
+        "height": 152
+      },
+      "tileFilter": {},
+      "customName": "Single value",
+      "queries": [
+        {
+          "id": "A",
+          "timeAggregation": "DEFAULT",
+          "metricSelector": "rabbitmq.queue.messages:splitBy(\"dt.entity.rabbitmq:vhost\"):auto:splitBy():count",
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "SINGLE_VALUE",
+        "global": {},
+        "rules": [
+          {
+            "matcher": "A:",
+            "properties": {
+              "color": "DEFAULT",
+              "seriesType": "COLUMN"
+            },
+            "seriesOverrides": []
+          }
+        ],
+        "axes": {
+          "xAxis": {
+            "displayName": "",
+            "visible": true
+          },
+          "yAxes": [
+            {
+              "displayName": "",
+              "visible": true,
+              "min": "AUTO",
+              "max": "AUTO",
+              "position": "LEFT",
+              "queryIds": [ "A" ],
+              "defaultAxis": true
+            }
+          ]
+        },
+        "heatmapSettings": {},
+        "singleValueSettings": {
+          "showSparkLine": false
+        },
+        "thresholds": [
+          {
+            "axisTarget": "LEFT",
+            "rules": [
+              { "color": "#7dc540" },
+              { "color": "#f5d30f" },
+              { "color": "#dc172a" }
+            ],
+            "visible": true
+          }
+        ],
+        "tableSettings": {},
+        "graphChartSettings": {
+          "connectNulls": false
+        },
+        "honeycombSettings": {}
+      }
+    },
+    {
+      "name": "Messages",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {
+        "top": 1026,
+        "left": 570,
+        "width": 418,
+        "height": 266
+      },
+      "tileFilter": {},
+      "customName": "Data explorer results",
+      "queries": [
+        {
+          "id": "A",
+          "metric": "rabbitmq.queue.messages",
+          "spaceAggregation": "AVG",
+          "timeAggregation": "DEFAULT",
+          "splitBy": ["dt.entity.rabbitmq:vhost"],
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "GRAPH_CHART",
+        "global": {},
+        "rules": [
+          {
+            "matcher": "A:",
+            "properties": {"color": "DEFAULT"},
+            "seriesOverrides": []
+          }
+        ],
+        "axes": {
+          "xAxis": {"visible": true},
+          "yAxes": []
+        },
+        "heatmapSettings": {},
+        "thresholds": [
+          {
+            "axisTarget": "LEFT",
+            "rules": [
+              {"color": "#7dc540"},
+              {"color": "#f5d30f"},
+              {"color": "#dc172a"}
+            ],
+            "visible": true
+          }
+        ],
+        "tableSettings": {},
+        "graphChartSettings": {"connectNulls": false},
+        "honeycombSettings": {}
+      }
+    },
+    {
+      "name": "Bytes Received",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {
+        "top": 1026,
+        "left": 988,
+        "width": 418,
+        "height": 266
+      },
+      "tileFilter": {},
+      "customName": "Data explorer results",
+      "queries": [
+        {
+          "id": "A",
+          "metric": "rabbitmq.vhost.recv_oct.count",
+          "spaceAggregation": "AVG",
+          "timeAggregation": "DEFAULT",
+          "splitBy": ["dt.entity.rabbitmq:vhost"],
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "GRAPH_CHART",
+        "global": {},
+        "rules": [
+          {
+            "matcher": "A:",
+            "properties": {"color": "DEFAULT"},
+            "seriesOverrides": []
+          }
+        ],
+        "axes": {
+          "xAxis": {"visible": true},
+          "yAxes": []
+        },
+        "heatmapSettings": {},
+        "thresholds": [
+          {
+            "axisTarget": "LEFT",
+            "rules": [
+              {"color": "#7dc540"},
+              {"color": "#f5d30f"},
+              {"color": "#dc172a"}
+            ],
+            "visible": true
+          }
+        ],
+        "tableSettings": {},
+        "graphChartSettings": {"connectNulls": false},
+        "honeycombSettings": {}
+      }
+    },
+    {
+      "name": "Virtual Host",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {
+        "top": 1026,
+        "left": 0,
+        "width": 570,
+        "height": 266
+      },
+      "tileFilter": {},
+      "customName": "Table",
+      "queries": [
+                {
+          "id": "A",
+          "metric": "rabbitmq.queue.messages",
+          "spaceAggregation": "AVG",
+          "timeAggregation": "DEFAULT",
+          "splitBy": [ "dt.entity.rabbitmq:vhost" ],
+          "enabled": true
+        },
+        {
+          "id": "B",
+          "metric": "rabbitmq.vhost.recv_oct.count",
+          "spaceAggregation": "AVG",
+          "timeAggregation": "DEFAULT",
+          "splitBy": [ "dt.entity.rabbitmq:vhost" ],
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "TABLE",
+        "global": {},
+        "rules": [
+          {
+            "matcher": "A:",
+            "properties": {"color": "DEFAULT"},
+            "seriesOverrides": []
+          }
+        ],
+        "axes": {
+          "xAxis": {"visible": true},
+          "yAxes": []
+        },
+        "heatmapSettings": {},
+        "thresholds": [
+          {
+            "axisTarget": "LEFT",
+            "rules": [
+              {"color": "#7dc540"},
+              {"color": "#f5d30f"},
+              {"color": "#dc172a"}
+            ],
+            "visible": true
+          }
+        ],
+        "tableSettings": {},
+        "graphChartSettings": {"connectNulls": false},
+        "honeycombSettings": {}
+      }
+    },
+    {
+      "name": "Title Queue",
+      "tileType": "MARKDOWN",
+      "configured": true,
+      "bounds": {
+        "top": 1292,
+        "left": 0,
+        "width": 1406,
+        "height": 38
+      },
+      "tileFilter": {},
+      "markdown": "## Queue"
+    },
+    {
+      "name": "Queue",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {
+        "top": 190,
+        "left": 456,
+        "width": 152,
+        "height": 152
+      },
+      "tileFilter": {},
+      "customName": "Single value",
+      "queries": [
+        {
+          "id": "A",
+          "timeAggregation": "DEFAULT",
+          "metricSelector": "rabbitmq.queue.messages:splitBy(\"dt.entity.rabbitmq:queue\"):auto:splitBy():count",
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "SINGLE_VALUE",
+        "global": {},
+        "rules": [
+          {
+            "matcher": "A:",
+            "properties": {
+              "color": "DEFAULT",
+              "seriesType": "COLUMN"
+            },
+            "seriesOverrides": []
+          }
+        ],
+        "axes": {
+          "xAxis": {
+            "displayName": "",
+            "visible": true
+          },
+          "yAxes": [
+            {
+              "displayName": "",
+              "visible": true,
+              "min": "AUTO",
+              "max": "AUTO",
+              "position": "LEFT",
+              "queryIds": [ "A" ],
+              "defaultAxis": true
+            }
+          ]
+        },
+        "heatmapSettings": {},
+        "singleValueSettings": {
+          "showSparkLine": false
+        },
+        "thresholds": [
+          {
+            "axisTarget": "LEFT",
+            "rules": [
+              { "color": "#7dc540" },
+              { "color": "#f5d30f" },
+              { "color": "#dc172a" }
+            ],
+            "visible": true
+          }
+        ],
+        "tableSettings": {},
+        "graphChartSettings": {
+          "connectNulls": false
+        },
+        "honeycombSettings": {}
+      }
+    },
+    {
+      "name": "Messages",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {
+        "top": 1330,
+        "left": 570,
+        "width": 418,
+        "height": 266
+      },
+      "tileFilter": {},
+      "customName": "Data explorer results",
+      "queries": [
+        {
+          "id": "A",
+          "metric": "rabbitmq.queue.messages",
+          "spaceAggregation": "AVG",
+          "timeAggregation": "DEFAULT",
+          "splitBy": ["dt.entity.rabbitmq:queue"],
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "GRAPH_CHART",
+        "global": {},
+        "rules": [
+          {
+            "matcher": "A:",
+            "properties": {"color": "DEFAULT"},
+            "seriesOverrides": []
+          }
+        ],
+        "axes": {
+          "xAxis": {"visible": true},
+          "yAxes": []
+        },
+        "heatmapSettings": {},
+        "thresholds": [
+          {
+            "axisTarget": "LEFT",
+            "rules": [
+              {"color": "#7dc540"},
+              {"color": "#f5d30f"},
+              {"color": "#dc172a"}
+            ],
+            "visible": true
+          }
+        ],
+        "tableSettings": {},
+        "graphChartSettings": {"connectNulls": false},
+        "honeycombSettings": {}
+      }
+    },
+    {
+      "name": "Messages Ready",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {
+        "top": 1330,
+        "left": 988,
+        "width": 418,
+        "height": 266
+      },
+      "tileFilter": {},
+      "customName": "Data explorer results",
+      "queries": [
+        {
+          "id": "A",
+          "metric": "rabbitmq.queue.messages_ready",
+          "spaceAggregation": "AVG",
+          "timeAggregation": "DEFAULT",
+          "splitBy": ["dt.entity.rabbitmq:queue"],
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "GRAPH_CHART",
+        "global": {},
+        "rules": [
+          {
+            "matcher": "A:",
+            "properties": {"color": "DEFAULT"},
+            "seriesOverrides": []
+          }
+        ],
+        "axes": {
+          "xAxis": {"visible": true},
+          "yAxes": []
+        },
+        "heatmapSettings": {},
+        "thresholds": [
+          {
+            "axisTarget": "LEFT",
+            "rules": [
+              {"color": "#7dc540"},
+              {"color": "#f5d30f"},
+              {"color": "#dc172a"}
+            ],
+            "visible": true
+          }
+        ],
+        "tableSettings": {},
+        "graphChartSettings": {"connectNulls": false},
+        "honeycombSettings": {}
+      }
+    },
+    {
+      "name": "Queue",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {
+        "top": 1330,
+        "left": 0,
+        "width": 570,
+        "height": 266
+      },
+      "tileFilter": {},
+      "customName": "Table",
+      "queries": [
+
+        {
+          "id": "A",
+          "metric": "rabbitmq.queue.messages",
+          "spaceAggregation": "AVG",
+          "timeAggregation": "DEFAULT",
+          "splitBy": [ "dt.entity.rabbitmq:queue" ],
+          "enabled": true
+        },        {
+          "id": "B",
+          "metric": "rabbitmq.queue.publish.count",
+          "spaceAggregation": "AVG",
+          "timeAggregation": "DEFAULT",
+          "splitBy": [ "dt.entity.rabbitmq:queue" ],
+          "enabled": true
+        },        {
+          "id": "C",
+          "metric": "rabbitmq.queue.messages_delivered.count",
+          "spaceAggregation": "AVG",
+          "timeAggregation": "DEFAULT",
+          "splitBy": [ "dt.entity.rabbitmq:queue" ],
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "TABLE",
+        "global": {},
+        "rules": [
+          {
+            "matcher": "A:",
+            "properties": {"color": "DEFAULT"},
+            "seriesOverrides": []
+          }
+        ],
+        "axes": {
+          "xAxis": {"visible": true},
+          "yAxes": []
+        },
+        "heatmapSettings": {},
+        "thresholds": [
+          {
+            "axisTarget": "LEFT",
+            "rules": [
+              {"color": "#7dc540"},
+              {"color": "#f5d30f"},
+              {"color": "#dc172a"}
+            ],
+            "visible": true
+          }
+        ],
+        "tableSettings": {},
+        "graphChartSettings": {"connectNulls": false},
+        "honeycombSettings": {}
+      }
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+    "enabled": true,
+    "description": "",
+    "version": "0.0.1",
+     "featureSets": [
+        "Cluster",
+        "Node",
+        "Queue",
+        "Virtual Host"
+      ],
+    "pythonRemote": {
+      "endpoints": [
+        {
+          "nodes": [
+            "http://localhost:15672"
+          ],
+          "user": "guest",
+          "password": "guest",
+          "queues_include": [".*"]
+        }
+      ]
+    }
+}

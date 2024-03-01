@@ -1,0 +1,35 @@
+# Log files
+*.log
+
+# Python
+*.py[cod]
+*.egg-info
+__pycache__
+
+# IDEs
+.idea
+.vscode
+
+# disk and build
+build
+dist
+
+# Environments
+.env
+.venv
+env/
+venv/
+
+# VS Code
+.vscode/*
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+.history/
+*.vsix
+
+# Dynatrace Extensions builds & configs
+config
+logs
+extension/lib/*
